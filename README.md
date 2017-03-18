@@ -1,3 +1,3 @@
-t# FileHandling
+# FileHandling
 
 **File Handling In C**
