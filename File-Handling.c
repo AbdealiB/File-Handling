@@ -1,28 +1,33 @@
+/*
+  Simple File Handling in C using Structure
+  By AbdealiB
+  https://github.com/AbdealiB/File-Handling
+*/
+
 #include<stdio.h>
 #include<conio.h>
 #include<string.h>
 
-//Creating Empl structure
+// Declaration of structure Empl
 struct Empl{
-    //Adding data types to store name and id's of the Employee's
+    // Adding data types to store name and id's of the Employees
     char name[100];
     int empl_id;
 };
 
 void main(){
 
-    struct Empl e[10]; // Defining array of structure variables
-    FILE *file_append, *file_read; 
+    struct Empl e[10]; // Declaring array of structure variables
+    FILE *file_append, *file_read; // Pointers to The File
     char buff[1000];
     int i;
 
-    file_append = fopen("employee-details.txt", "a+"); // fileobject to append employee details into employee-details.txt
-    file_read = fopen("employee-details.txt", "r"); // fileobject to read the created employee-details.txt
+    file_append = fopen("employee-details.txt", "a+"); // employee-details.txt opened in append mode
+    file_read = fopen("employee-details.txt", "r"); // employee-details.txt opened in read mode
     
     /* Getting Input from User and Appending to the file employee-details. */
     if (file_append != NULL) {
         // Asking users to enter 10 employee name's and id's
-
         for(i = 0; i < 10; i++){
             printf("Enter Name of Employee and Employee ID of the Employee:\n");
             scanf("%s%d", &e[i].name, &e[i].empl_id);
@@ -36,12 +41,11 @@ void main(){
         printf("The file wasn't Created.\n");
     }
 
-    /* Reading from the employee-details.txt line by line  And Displaying It. */
+    /* Reading from the employee-details.txt line by line And Displaying It. */
     printf("Contents of file are: \n");
     while (fgets(buff, 1000, file_read) !=NULL) {
        printf("%s", buff);
    }
    fclose(file_read); // Closing the file
-    
    getch();
 }
