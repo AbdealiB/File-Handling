@@ -13,6 +13,7 @@ struct Empl{
     // Adding data types to store name and id's of the Employees
     char name[100];
     int empl_id;
+    char Address[1000];
 };
 
 void main(){
@@ -28,11 +29,16 @@ void main(){
     /* Getting Input from User and Appending to the file employee-details. */
     if (file_append != NULL) {
         // Asking users to enter 10 employee name's and id's
-        for(i = 0; i < 10; i++){
-            printf("Enter Name of Employee and Employee ID of the Employee:\n");
-            scanf("%s%d", &e[i].name, &e[i].empl_id);
+        for(i = 1; i <= 9; i++){
+            printf("Enter Name of Employee %d: ", i);
+            gets(e[i].name);
+            printf("Enter ID of the Employee %d: ", i);
+            scanf("%d", &e[i].empl_id);
+            getchar();
+            printf("Enter address of the Employee %d: ", i);
+            gets(e[i].Address);
             // Printing it to the employee-details.txt file
-            fprintf(file_append, "Employee %s has Employee ID %d.\n", e[i].name, e[i].empl_id);
+            fprintf(file_append, "Employee %s has Employee ID %d and Address: %s.\n", e[i].name, e[i].empl_id, e[i].Address);
         }
         printf("File Created.\n");
         fclose(file_append); // Closing the file
